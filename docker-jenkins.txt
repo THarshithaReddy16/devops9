@@ -1,0 +1,55 @@
+JENKINSS 
+
+
+[root@ip-172-31-12-142 ~]# history
+    1  yum install jenkins -y
+    2  yum install java-17-amazon-corretto -y
+    3  sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    4  yum install jenkins -y
+    5  systemctl start jenkins
+    6  cat /var/lib/jenkins/secrets/initialAdminPassword
+    7  yum install git maven -y
+    8  yum install docker -y
+    9  mvn --version
+   10  /usr/share/maven
+   11  systemctl start docker
+   12  systemctl enable docker
+   13  sudo usermod -aG docker jenkins
+   14  sudo systemctl restart Jenkins
+
+DOCKER
+yum install docker -y
+systemctl start docker
+docker images
+doccker ps
+vim index.html
+vim Dockerfile
+git -v
+git init
+git add *
+git remote add
+git push origin master
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/THarshithaReddy16/dockerexample.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t mywebsite .'
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                sh 'docker run -itd --name myapp1 -p 81:80 mywebsite'
+            }
+        }
+    }
+}
